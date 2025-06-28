@@ -1,0 +1,20 @@
+*{
+	tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
+}
+body {
+	margin: 0;
+	background: #FFF;
+	overflow: hidden;
+}
+
+canvas {
+	background: #FFF;
+}
+
+@font-face {
+	font-family: 'Times New Roman';
+	src: url('../../fonts/times.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

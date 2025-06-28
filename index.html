@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>测量水的温度数据记录</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name = "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+	
+	<link rel="stylesheet" href="lib/css/common.css">
+
+	<script src="lib/createjs.min.js"></script>
+	<script src="lib/createjs-utils.js"></script>
+	<script src="lib/audioplayer.js"></script>
+	<script src="lib/videoplayer.js"></script>
+	<script src="lib/inputwidget.js"></script>
+	<script src="/res/cdn/api.js"></script>
+	<script src="src/config.js"></script>
+	<script src="src/main.js"></script>
+	<script src="index.js"></script>
+	<script>
+		(function(w, d, s) {
+			var l = 'IFlyCollector',
+			f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s),
+			w = window;
+			w[l] = {};
+			var c = w[l];
+			c._o = function(a) {
+				return function() { (c._e = c._e || []).push([a, arguments])};
+			};
+			var e = ['init', 'onEvent', 'onError', 'bindUser', 'updateCustomConfig'];
+			for (var i in e) {
+				c[e[i]] = c._o.call(null, e[i]);
+			}
+			j.async = true;
+			j.src = 'https://ebgjs.changyan.com/jssdk/entry.js';
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script');
+
+		// setUserInfo({appId:"sdsd_platform_wk_sdk", userId:""});
+		var userInfo = {};
+		function setUserInfo(user) {
+			userInfo = user;
+			IFlyCollector.init({
+				appId: userInfo.appId,
+				host: '.',
+				debug: true,
+				spa: false,
+				configUrl: "",
+				collectUrl: "",
+				gpsGetSwitch: false,
+				source:"ebg"
+			});
+			IFlyCollector.bindUser(userInfo.userId, null);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="1280" height="720"></canvas>
+</body>
+</html>
